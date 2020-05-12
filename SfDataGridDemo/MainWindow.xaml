@@ -1,12 +1,16 @@
-# How to resize the row header column in WPF DataGrid(SfDataGrid)?	
-
-## About the sample
-This example illustrates how to resize the row header column in WPF DataGrid(SfDataGrid)?
-
-By default, SfDataGrid does not provide the direct support to resize the row header column. You can resize the row header column by overriding the GridRowHeaderCell and GridRowHeaderIndentCell by triggering the Thumb.DragDelta event.
-
-```xml
- <Window.Resources>
+﻿<Window x:Class="SfDataGrid_MVVM.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SfDataGrid_MVVM"
+         xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Window.DataContext>
+        <local:ViewModel />
+    </Window.DataContext>
+    <Window.Resources>
         <Style TargetType="syncfusion:GridRowHeaderCell">
             <Setter Property="Background" Value="Transparent" />
             <Setter Property="BorderBrush" Value="Gray" />
@@ -236,17 +240,24 @@ By default, SfDataGrid does not provide the direct support to resize the row hea
 
         </Style>
     </Window.Resources>
-```
-
-```c#
-private void PART_RightHeaderGripper_DragDelta(object sender, System.Windows.Controls.Primitives.DragDeltaEventArgs e)
-{
-            SfDataGrid sfDataGrid = (sender as Thumb).Tag as SfDataGrid;
-            var width = sfDataGrid.RowHeaderWidth + e.HorizontalChange;
-            if (width >= 24)
-                sfDataGrid.RowHeaderWidth = width;
-}
-```
-
-## Requirements to run the demo
-Visual Studio 2015 and above versions
+    <Grid>
+        <syncfusion:SfDataGrid Name="dataGrid"
+                               ShowRowHeader="True"
+                               AutoGenerateColumns="False"
+                               AllowEditing="True"
+                               ColumnSizer="Auto"
+                               ItemsSource="{Binding Employees}"
+                               AllowFiltering="True"
+                               AllowDraggingRows="True"
+                               AllowDrop="True">
+            <syncfusion:SfDataGrid.Columns>
+                <syncfusion:GridTextColumn MappingName="FirstName" ColumnFilter="DisplayText" />
+                <syncfusion:GridTextColumn MappingName="LastName" />
+                <syncfusion:GridTextColumn MappingName="ID"/>
+                <syncfusion:GridTextColumn MappingName="Title" />
+                <syncfusion:GridCurrencyColumn  MappingName="Salary" />
+                <syncfusion:GridTextColumn MappingName="ReportsTo" />
+            </syncfusion:SfDataGrid.Columns>
+        </syncfusion:SfDataGrid>
+    </Grid>    
+</Window>
