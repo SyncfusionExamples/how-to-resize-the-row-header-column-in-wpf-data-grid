@@ -248,6 +248,7 @@ private void PART_RightHeaderGripper_DragDelta(object sender, System.Windows.Con
                 sfDataGrid.RowHeaderWidth = width;
 }
 ```
+ KB article - [How to resize the row header column in WPF DataGrid(SfDataGrid)?](https://www.syncfusion.com/kb/11517/how-to-resize-the-row-header-column-in-wpf-datagrid-sfdatagrid)
 
 ## Requirements to run the demo
 Visual Studio 2015 and above versions
