@@ -247,4 +247,4 @@ private void PART_RightHeaderGripper_DragDelta(object sender, System.Windows.Con
 }
 ```
 
-![DataGrid with resizing row header column](ResizingRowHeader.png)
+![DataGrid with resizing row header column](ResizingRowHeader.gif)
